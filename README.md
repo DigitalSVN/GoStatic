@@ -15,6 +15,12 @@ The output will be a dynamically generated URL. Example: https://mmxa0g1k1hkqqre
 
 We intend to support named subdomains and custom domains in future releases.
 
+### Example Pull Request
+You can see exactly how this action works on the following Pull Request:
+https://github.com/DigitalSVN/GoStatic/pull/1
+
+The ./example_output folder has been deployed, and a comment on the PR is generated containing the URL.
+
 ### Example 1 - On push, Deploy and output the URL
 ```yaml
 on: [push]
