@@ -1,10 +1,10 @@
 ## GoStatic
-GoStatic offers fast and simple way to deploy static sites. Zero config, no cloud account needed.
+GoStatic offers a fast and simple way to deploy static sites. Zero config, no cloud account needed.
 
 https://www.gostaticapp.com/
 
 ### About the GoStatic github action
-This github action allows you to easily deploy using GoStatic as part of your continuous deployment work flow.
+This github action allows you to easily deploy using GoStatic as part of your continuous deployment workflow.
 
 #### Input
 The input will be a directory containing your static site. This would normally be something like `./build_production` 
