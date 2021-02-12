@@ -1,0 +1,26 @@
+on: [pull_request]
+
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+    name: Deploy using GoStatic
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy
+        id: deploy
+        uses: digitalsvn/gostatic@main
+        with:
+          api-token: ${{ secrets.GOSTATIC_API_TOKEN }}
+          source-dir: './example_output_directory'
+
+      - name: Output the deployment URL
+        run: echo "URL ${{ steps.deploy.outputs.url }}"
+
+      - name: Output the deployment URL in a comment on the pull request
+        uses: actions/github-script@0.3.0
+        if: github.event_name == 'pull_request'
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { issue: { number: issue_number }, repo: { owner, repo }  } = context;
+            github.issues.createComment({ issue_number, owner, repo, body: 'URL ready:  ${{ steps.deploy.outputs.url }}' });

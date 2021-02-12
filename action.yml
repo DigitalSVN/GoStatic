@@ -1,0 +1,19 @@
+name: 'GoStatic Deploy'
+description: 'Instantly deploy a static site to a URL with GoStatic'
+inputs:
+  api-token:
+    description: 'Your GoStatic API token'
+    required: true
+  source-dir:
+    description: 'Relative path to the directory you want to deploy e.g. ./build_production or ./output'
+    required: true
+
+outputs:
+  url:
+    description:  'The URL of your deployment'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.source-dir }}
+    - ${{ inputs.api-token }}
