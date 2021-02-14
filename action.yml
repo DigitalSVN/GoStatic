@@ -1,7 +1,8 @@
-name: 'GoStatic'
+name: 'GoStatic Deploy'
 description: 'Instantly deploy your static site to a URL'
-icon: 'arrow-up-circle'
-color: 'green'
+branding:
+  icon: 'arrow-up-circle'
+  color: 'green'
 inputs:
   api-token:
     description: 'Your GoStatic API token'
@@ -9,7 +10,6 @@ inputs:
   source-dir:
     description: 'Relative path to the directory you want to deploy e.g. ./build_production or ./output'
     required: true
-
 outputs:
   url:
     description:  'The URL of your deployment'
