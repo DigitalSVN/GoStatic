@@ -1,5 +1,7 @@
-name: 'GoStatic Deploy'
-description: 'Instantly deploy a static site to a URL with GoStatic'
+name: 'GoStatic'
+description: 'Instantly deploy your static site to a URL'
+icon: 'arrow-up-circle'
+color: 'green'
 inputs:
   api-token:
     description: 'Your GoStatic API token'
