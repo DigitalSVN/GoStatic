@@ -28,6 +28,7 @@ echo "Uploading. This might take a while..."
 http_response_code=$(curl --silent --write-out "%{http_code}" --output response.txt \
   -X POST \
   -H "Accept: application/json" \
+  -A "GoStatic/1.1 (+https://www.gostaticapp.com)" \
   -H "Authorization: Bearer $API_TOKEN" \
   -F "file=@artifact.tar.gz" \
   https://www.gostaticapp.com/api/deploy/artifact)
