@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Deploy
         id: deploy
-        uses: DigitalSVN/GoStatic@v1.0
+        uses: DigitalSVN/GoStatic@v1.1
         with:
           api-token: ${{ secrets.GOSTATIC_API_TOKEN }}
           source-dir: './example_output_directory'
@@ -54,7 +54,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Deploy
         id: deploy
-        uses: DigitalSVN/GoStatic@v1.0
+        uses: DigitalSVN/GoStatic@v1.1
         with:
           api-token: ${{ secrets.GOSTATIC_API_TOKEN }}
           source-dir: './example_output_directory'
