@@ -11,7 +11,7 @@ The input will be a directory containing your static site. This would normally b
 or `./output` etc
 
 #### Output
-The output will be a dynamically generated URL. Example: https://mmxa0g1k1hkqqreg.gostatic.app
+The output will be a dynamically generated URL. Example: https://tfdsyc0zfcqivths.gostatic.app
 
 We intend to support named subdomains and custom domains in future releases.
 
