@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy using GoStatic
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Deploy
         id: deploy
         uses: DigitalSVN/GoStatic@v1.1
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Deploy using GoStatic
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Deploy
         id: deploy
         uses: DigitalSVN/GoStatic@v1.1
@@ -60,13 +60,13 @@ jobs:
           source-dir: './example_output_directory'
 
       - name: Output the deployment URL in a comment on the pull request
-        uses: actions/github-script@0.3.0
+        uses: actions/github-script@v7
         if: github.event_name == 'pull_request'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const { issue: { number: issue_number }, repo: { owner, repo }  } = context;
-            github.issues.createComment({ issue_number, owner, repo, body: 'URL ready:  ${{ steps.deploy.outputs.url }}' });
+            github.rest.issues.createComment({ issue_number, owner, repo, body: 'URL ready:  ${{ steps.deploy.outputs.url }}' });
 ```
 
 ### Prerequisites

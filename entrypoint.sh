@@ -35,17 +35,24 @@ http_response_code=$(curl --silent --write-out "%{http_code}" --output response.
 
 response_content=$(cat response.txt)
 
-content_deployment_id=$(echo $response_content | jq -r '.deployment_id')
-content_message=$(echo $response_content | jq -r '.message')
-content_error=$(echo $response_content | jq -r '.error')
-content_status=$(echo $response_content | jq -r '.status')
-content_url=$(echo $response_content | jq -r '.url')
-
 rm artifact.tar.gz
 rm response.txt
 
-if [[ "$http_response_code" != "201" ]]; then
-  echo "Code:$http_response_code\nMessage:$content_message\nError:$content_error"
+if ! echo "$response_content" | jq -e . > /dev/null 2>&1; then
+  echo "Error: API returned a non-JSON response (HTTP $http_response_code)"
+  echo "Response: $response_content"
+  exit 1
+fi
+
+content_deployment_id=$(echo $response_content | jq -r '.deployment_id')
+content_message=$(echo $response_content | jq -r '.message')
+content_error=$(echo $response_content | jq -r '.error')
+content_url=$(echo $response_content | jq -r '.url')
+
+if [ "$http_response_code" != "201" ]; then
+  echo "Error: Deployment failed (HTTP $http_response_code)"
+  echo "Message: $content_message"
+  echo "Error: $content_error"
   exit 1
 fi
 
